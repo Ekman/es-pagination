@@ -1,5 +1,5 @@
 {
-    "name": "stockfiller/es-pagination",
+    "name": "nekman/es-pagination",
     "description": "Deep pagination for the Elasticsearch client",
     "type": "library",
     "license": "MIT",
