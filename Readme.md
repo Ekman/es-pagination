@@ -30,7 +30,7 @@ $params = [
 
 $cursor = $cursorFactory->hits($params);
 
-foreach ($cursorFactory as $hit) {
-    // Do something with the hit
+foreach ($cursor as $hit) {
+    echo "Hit {$hit['_id']}";
 }
 ```
