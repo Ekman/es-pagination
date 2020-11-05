@@ -1,6 +1,6 @@
 <?php
 
-namespace Stockfiller\EsPagination;
+namespace Nekman\EsPagination;
 
 /** @internal */
 class EsUtility

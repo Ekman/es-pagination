@@ -13,7 +13,7 @@ Construct an instance of a `Elasticsearch\Client` which you can read more about 
 ### Scroll
 
 ```php
-use Stockfiller\EsPagination\EsScrollCursorFactory;
+use Nekman\EsPagination\EsScrollCursorFactory;
 
 $cursorFactory = new EsScrollCursorFactory(
     $elasticsearchClient,
