@@ -1,0 +1,17 @@
+{
+    "name": "stockfiller/es-pagination",
+    "description": "Deep pagination for the Elasticsearch client",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.4",
+        "elasticsearch/elasticsearch": "^7.9",
+        "psr/log": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "\\Stockfiller\\EsPagination\\": "src"
+        }
+    }
+}

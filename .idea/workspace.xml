@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6dbaa806-a8c1-497d-81c7-8f58b22a47b9" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/react/promise" />
+      <path value="$PROJECT_DIR$/vendor/elasticsearch/elasticsearch" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/ezimuel/ringphp" />
+      <path value="$PROJECT_DIR$/vendor/ezimuel/guzzlestreams" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1jsCD0wuYeDH9gRLxlUeusRllLk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6dbaa806-a8c1-497d-81c7-8f58b22a47b9" name="Default Changelist" comment="" />
+      <created>1604583288754</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604583288754</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="3324" y="548" key="#com.intellij.ide.util.MemberChooser" timestamp="1604583646101">
+      <screen x="2560" y="360" width="1920" height="1040" />
+    </state>
+    <state x="3324" y="548" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.360.1920.1040@2560.360.1920.1040" timestamp="1604583646101" />
+    <state x="3246" y="535" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604584130727">
+      <screen x="2560" y="360" width="1920" height="1040" />
+    </state>
+    <state x="3246" y="535" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1400/2560.360.1920.1040@2560.360.1920.1040" timestamp="1604584130727" />
+    <state x="3258" y="586" key="NewPhpClassDialog" timestamp="1604583510803">
+      <screen x="2560" y="360" width="1920" height="1040" />
+    </state>
+    <state x="3258" y="586" key="NewPhpClassDialog/0.0.2560.1400/2560.360.1920.1040@2560.360.1920.1040" timestamp="1604583510803" />
+  </component>
+</project>
