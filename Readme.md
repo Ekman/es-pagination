@@ -17,7 +17,7 @@ use Nekman\EsPagination\EsScrollCursorFactory;
 
 $cursorFactory = new EsScrollCursorFactory(
     $elasticsearchClient,
-    $size = 1000,
+    $pageSize = 1000,
     $scrollDuration = "1m"
 );
 
