@@ -15,18 +15,15 @@ class EsScrollCursorFactory implements EsCursorFactoryInterface
     private Client $client;
     private int $pageSize;
     private string $scrollDuration;
-    private LoggerInterface $logger;
 
     public function __construct(
         Client $client,
         int $pageSize = 1000,
-        string $scrollDuration = "1m",
-        ?LoggerInterface $logger = null
+        string $scrollDuration = "1m"
     ) {
         $this->client = $client;
         $this->pageSize = $pageSize;
         $this->scrollDuration = $scrollDuration;
-        $this->logger = $logger ?? new NullLogger();
     }
 
     public function hits(array $params): iterable
