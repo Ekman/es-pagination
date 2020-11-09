@@ -22,8 +22,7 @@ class EsScrollCursorFactory implements EsCursorFactoryInterface
         int $pageSize = 1000,
         string $scrollDuration = "1m",
         ?LoggerInterface $logger = null
-    )
-    {
+    ) {
         $this->client = $client;
         $this->pageSize = $pageSize;
         $this->scrollDuration = $scrollDuration;
