@@ -39,7 +39,7 @@ class EsScrollCursorFactory implements EsCursorFactoryInterface
     {
         $params = array_merge($params, [
             "scroll" => $this->scrollDuration,
-            "size" => $this->pageSize,
+            "size" => $params["size"] ?? $this->pageSize,
         ]);
 
         $response = $this->client->search($params);
