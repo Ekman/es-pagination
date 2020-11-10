@@ -3,14 +3,12 @@
 namespace Nekman\EsPagination;
 
 use Elasticsearch\Client;
-use Psr\Log\LoggerInterface;
-use Psr\Log\NullLogger;
 
 /**
  * Deep paginate an ES search by using scroll
  * @see https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results
  */
-class EsScrollCursorFactory implements EsCursorFactoryInterface
+class EsScrollCursorFactory extends BaseCursorFactory
 {
     private Client $client;
     private int $pageSize;
@@ -24,15 +22,6 @@ class EsScrollCursorFactory implements EsCursorFactoryInterface
         $this->client = $client;
         $this->pageSize = $pageSize;
         $this->scrollDuration = $scrollDuration;
-    }
-
-    public function hits(array $params): iterable
-    {
-        foreach ($this->responses($params) as $response) {
-            foreach (EsUtility::hits($response) as $hit) {
-                yield $hit;
-            }
-        }
     }
 
     public function responses(array $params): iterable
