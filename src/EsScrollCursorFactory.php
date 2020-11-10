@@ -27,7 +27,7 @@ class EsScrollCursorFactory extends BaseCursorFactory
     public function responses(array $params): iterable
     {
         $params = array_merge($params, [
-            "scroll" => $this->scrollDuration,
+            "scroll" => $params["scroll"] ?? $this->scrollDuration,
             "size" => $params["size"] ?? $this->pageSize,
         ]);
 
@@ -39,7 +39,7 @@ class EsScrollCursorFactory extends BaseCursorFactory
                 yield $response;
 
                 $response = $this->client->scroll([
-                    "scroll" => $this->scrollDuration,
+                    "scroll" => $params["scroll"] ?? $this->scrollDuration,
                     "body" => [
                         "scroll_id" => $scrollId,
                     ],
