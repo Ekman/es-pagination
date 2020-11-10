@@ -1,6 +1,6 @@
 <?php
 
-namespace Nekman\EsPagination;
+namespace Nekman\EsPagination\Contracts;
 
 interface EsCursorFactoryInterface
 {

@@ -1,8 +1,9 @@
 <?php
 
-namespace Nekman\EsPagination;
+namespace Nekman\EsPagination\CursorFactories;
 
 use Elasticsearch\Client;
+use Nekman\EsPagination\EsUtility;
 
 class EsFromCursorFactory extends BaseCursorFactory
 {

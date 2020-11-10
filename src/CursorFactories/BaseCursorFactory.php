@@ -1,6 +1,9 @@
 <?php
 
-namespace Nekman\EsPagination;
+namespace Nekman\EsPagination\CursorFactories;
+
+use Nekman\EsPagination\Contracts\EsCursorFactoryInterface;
+use Nekman\EsPagination\EsUtility;
 
 /** @internal */
 abstract class BaseCursorFactory implements EsCursorFactoryInterface

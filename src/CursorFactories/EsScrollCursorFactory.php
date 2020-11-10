@@ -1,8 +1,9 @@
 <?php
 
-namespace Nekman\EsPagination;
+namespace Nekman\EsPagination\CursorFactories;
 
 use Elasticsearch\Client;
+use Nekman\EsPagination\EsUtility;
 
 /**
  * Deep paginate an ES search by using scroll
