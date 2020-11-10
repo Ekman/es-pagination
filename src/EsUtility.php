@@ -42,4 +42,14 @@ class EsUtility
             ? null
             : $hits[$nHits - 1];
     }
+
+    public static function setParamsSort(array $params, array $sort): array
+    {
+        $params["body"] = array_merge(
+            $params["body"] ?? [],
+            ["sort" => $sort]
+        );
+
+        return $params;
+    }
 }
