@@ -16,7 +16,7 @@ class EsScrollCursorFactory extends BaseCursorFactory
 
     public function __construct(
         Client $client,
-        int $pageSize = 1000,
+        int $pageSize = EsUtility::DEFAULT_PAGE_SIZE,
         string $scrollDuration = "1m"
     ) {
         $this->client = $client;

@@ -9,7 +9,7 @@ class EsFromCursorFactory extends BaseCursorFactory
     private Client $es;
     private int $pageSize;
 
-    public function __construct(Client $es, int $pageSize = 1000)
+    public function __construct(Client $es, int $pageSize = EsUtility::DEFAULT_PAGE_SIZE)
     {
         $this->es = $es;
         $this->pageSize = $pageSize;
