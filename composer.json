@@ -20,5 +20,10 @@
     "scripts": {
         "test": "phpunit",
         "lint": "php-cs-fixer fix src --rules=@PSR2"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
     }
 }
