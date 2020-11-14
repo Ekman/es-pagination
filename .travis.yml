@@ -8,7 +8,7 @@ matrix:
   allow_failures:
     - php: nightly
 
-install: composer update --no-interaction --classmap-authoritative --no-suggest --ignore-platform-reqs --prefer-lowest
+install: composer update --no-interaction --classmap-authoritative --ignore-platform-reqs --prefer-lowest
 
 script: vendor/bin/phpunit --configuration phpunit.xml --coverage-clover /tmp/coverage-clover.xml
 
