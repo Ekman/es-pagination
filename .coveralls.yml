@@ -1,3 +1,3 @@
 service_name: travis-ci
-coverage_clover: .phpunit.cache/code-coverage
+coverage_clover: /tmp/coverage-clover.xml
 json_path: /tmp/coveralls-upload.json
