@@ -1,5 +1,8 @@
 # Elasticsearch pagination
 
+[![Build Status](https://travis-ci.org/Ekman/es-pagination.svg?branch=master)](https://travis-ci.org/Ekman/es-pagination)
+[![Coverage Status](https://coveralls.io/repos/github/Ekman/es-pagination/badge.svg?branch=master)](https://coveralls.io/github/Ekman/es-pagination?branch=master)
+
 A library to deep paginate an Elasticsearch search operation. There are [three ways to paginate](https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html):
 
 1. [Scroll](#scroll)
