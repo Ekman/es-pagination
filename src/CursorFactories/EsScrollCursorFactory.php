@@ -25,7 +25,7 @@ class EsScrollCursorFactory extends BaseCursorFactory
         $this->scrollDuration = $scrollDuration;
     }
 
-    public function responses(array $params): iterable
+    public function responses(array $params = []): iterable
     {
         $params = array_merge($params, [
             "scroll" => $params["scroll"] ?? $this->scrollDuration,

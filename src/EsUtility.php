@@ -43,7 +43,13 @@ class EsUtility
             : $hits[$nHits - 1];
     }
 
-    public static function setParamsSort(array $params, array $sort): array
+    /**
+     * Set the sort on search parameters
+     * @param array $params Elasticsearch search parameters
+     * @param array $sort Sort to set on the parameters
+     * @return array Elasticsearch search with sort parameters
+     */
+    public static function paramsSort(array $params, array $sort): array
     {
         $params["body"] = array_merge(
             $params["body"] ?? [],
@@ -51,5 +57,57 @@ class EsUtility
         );
 
         return $params;
+    }
+
+    /**
+     * Create a test Elasticsearch response. This function exists purely for the purpose of utilizing DRY
+     * inside tests, it is not designed to make sense.
+     * @param array $hits Search hits
+     * @param string|null $scrollId Add a scroll ID to the response
+     * @return array An test Elasticsearch response
+     */
+    public static function response(array $hits = [], ?string $scrollId = null): array
+    {
+        $response = [
+            "hits" => [
+                "hits" => $hits
+            ]
+        ];
+
+        if ($scrollId) {
+            $response["_scroll_id"] = $scrollId;
+        }
+
+        return $response;
+    }
+
+    /**
+     * Get the IDs of a collection of Elasticsearch hits
+     * @param iterable $hits A collection of Elasticsearch hits
+     * @return iterable A collection of IDs
+     */
+    public static function hitsId(iterable $hits): iterable
+    {
+        foreach ($hits as $hit) {
+            yield $hit["_id"];
+        }
+    }
+
+    /**
+     * Create a test Elasticsearch hit. This function exists purely for the purpose of utilizing DRY
+     * inside tests, it is not designed to make sense.
+     * @param string $id The ID of the hit
+     * @param array $sort Sort parameter of the hit
+     * @return array An test Elasticsearch hit
+     */
+    public static function hit(string $id, array $sort = []): array
+    {
+        $hit = ["_id" => $id];
+
+        if (!empty($sort)) {
+            $hit["sort"] = $sort;
+        }
+
+        return $hit;
     }
 }

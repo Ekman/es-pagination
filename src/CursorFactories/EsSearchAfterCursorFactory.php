@@ -21,7 +21,7 @@ class EsSearchAfterCursorFactory extends BaseCursorFactory
         $this->defaultSort = $defaultSort;
     }
 
-    public function responses(array $params): iterable
+    public function responses(array $params = []): iterable
     {
         if (!isset($params["size"])) {
             $params["size"] = $this->pageSize;
@@ -31,7 +31,7 @@ class EsSearchAfterCursorFactory extends BaseCursorFactory
         // we need to fallback to something that is similar to all entities which is an "_id". Note that ES
         // does not recommend using "_id" here, not much to do though.
         if (empty($params["body"]["sort"])) {
-            $params = EsUtility::setParamsSort($params, $this->defaultSort);
+            $params = EsUtility::paramsSort($params, $this->defaultSort);
         }
 
         $response = $this->client->search($params);

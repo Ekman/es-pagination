@@ -16,7 +16,7 @@ class EsFromCursorFactory extends BaseCursorFactory
         $this->pageSize = $pageSize;
     }
 
-    public function responses(array $params): iterable
+    public function responses(array $params = []): iterable
     {
         if (!isset($params["size"])) {
             $params["size"] = $this->pageSize;
