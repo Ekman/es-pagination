@@ -10,7 +10,7 @@ matrix:
 
 install: composer update --no-interaction --classmap-authoritative --ignore-platform-reqs --prefer-lowest
 
-script: vendor/bin/phpunit --configuration phpunit.xml --coverage-clover /tmp/coverage-clover.xml
+script: vendor/bin/phpunit --configuration phpunit.xml --coverage-clover coverage-clover.xml
 
 after_success: vendor/bin/php-coveralls --verbose
 
