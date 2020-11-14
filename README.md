@@ -21,7 +21,7 @@ The first step is to construct an `$elasticsearchClient` (instance of `Elasticse
 ### Scroll
 
 ```php
-use Nekman\EsPagination\EsScrollCursorFactory;
+use Nekman\EsPagination\CursorFactories\EsScrollCursorFactory;
 
 $cursorFactory = new EsScrollCursorFactory(
     $elasticsearchClient,
@@ -46,7 +46,7 @@ foreach ($cursor as $hit) {
 ### From
 
 ```php
-use Nekman\EsPagination\EsFromCursorFactory;
+use Nekman\EsPagination\CursorFactories\EsFromCursorFactory;
 
 $cursorFactory = new EsFromCursorFactory(
     $elasticsearchClient,
@@ -70,7 +70,7 @@ foreach ($cursor as $hit) {
 ### Search after
 
 ```php
-use Nekman\EsPagination\EsSearchAfterCursorFactory;
+use Nekman\EsPagination\CursorFactories\EsSearchAfterCursorFactory;
 
 $cursorFactory = new EsSearchAfterCursorFactory(
     $elasticsearchClient,
