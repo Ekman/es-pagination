@@ -1,12 +1,12 @@
 language: php
 
 php:
-    - 7.4
-    - nightly
+  - 7.4
+  - nightly
 
 matrix:
-    allow_failures:
-        -   php: nightly
+  allow_failures:
+    - php: nightly
 
 install: composer update --no-interaction --classmap-authoritative --ignore-platform-reqs --prefer-lowest
 
@@ -15,8 +15,8 @@ script: vendor/bin/phpunit --configuration phpunit.xml --coverage-clover coverag
 after_success: vendor/bin/php-coveralls --verbose
 
 notifications:
-    email: false
+  email: false
 
 cache:
-    directories:
-        - $HOME/.composer
+  directories:
+    - $HOME/.composer
