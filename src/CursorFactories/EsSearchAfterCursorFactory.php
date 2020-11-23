@@ -42,7 +42,7 @@ class EsSearchAfterCursorFactory extends BaseCursorFactory
             // The last hit of the response will contain information on how to get the next result set
             $lastHit = EsUtility::lastHit($response);
 
-            if (!$lastHit) {
+            if (!$lastHit || !isset($lastHit["sort"])) {
                 break;
             }
 
