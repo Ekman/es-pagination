@@ -22,14 +22,12 @@ class EsFromCursorFactory extends BaseCursorFactory
             $params["size"] = $this->pageSize;
         }
 
-        $response = $this->es->search($params);
+        yield $response = $this->es->search($params);
 
         while (EsUtility::countHits($response) >= $params["size"]) {
-            yield $response;
-
             $params["from"] = ($params["from"] ?? 0) + $params["size"];
 
-            $response = $this->es->search($params);
+            yield $response = $this->es->search($params);
         }
     }
 }

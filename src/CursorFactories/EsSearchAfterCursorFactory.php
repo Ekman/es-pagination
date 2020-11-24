@@ -34,11 +34,9 @@ class EsSearchAfterCursorFactory extends BaseCursorFactory
             $params = EsUtility::paramsSort($params, $this->defaultSort);
         }
 
-        $response = $this->client->search($params);
+        yield $response = $this->client->search($params);
 
         while (EsUtility::countHits($response) >= $params["size"]) {
-            yield $response;
-
             // The last hit of the response will contain information on how to get the next result set
             $lastHit = EsUtility::lastHit($response);
 
@@ -48,7 +46,7 @@ class EsSearchAfterCursorFactory extends BaseCursorFactory
 
             $params["body"]["search_after"] = $lastHit["sort"];
 
-            $response = $this->client->search($params);
+            yield $response = $this->client->search($params);
         }
     }
 }

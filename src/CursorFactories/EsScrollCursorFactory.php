@@ -32,14 +32,12 @@ class EsScrollCursorFactory extends BaseCursorFactory
             "size" => $params["size"] ?? $this->pageSize,
         ]);
 
-        $response = $this->client->search($params);
+        yield $response = $this->client->search($params);
         $scrollId = $response["_scroll_id"];
 
         try {
             while (EsUtility::countHits($response) >= $params["size"]) {
-                yield $response;
-
-                $response = $this->client->scroll([
+                yield $response = $this->client->scroll([
                     "scroll" => $params["scroll"] ?? $this->scrollDuration,
                     "body" => [
                         "scroll_id" => $scrollId,
