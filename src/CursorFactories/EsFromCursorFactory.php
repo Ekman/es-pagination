@@ -24,7 +24,7 @@ class EsFromCursorFactory extends BaseCursorFactory
 
         $response = $this->es->search($params);
 
-        while (EsUtility::countHits($response) > 0) {
+        while (EsUtility::countHits($response) >= $params["size"]) {
             yield $response;
 
             $params["from"] = ($params["from"] ?? 0) + $params["size"];

@@ -36,7 +36,7 @@ class EsSearchAfterCursorFactory extends BaseCursorFactory
 
         $response = $this->client->search($params);
 
-        while (EsUtility::countHits($response) > 0) {
+        while (EsUtility::countHits($response) >= $params["size"]) {
             yield $response;
 
             // The last hit of the response will contain information on how to get the next result set
