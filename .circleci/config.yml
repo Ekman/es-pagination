@@ -11,10 +11,6 @@ executors:
     docker:
       - image: php:7.4-alpine
     resource_class: small
-  php80:
-    docker:
-      - image: php:8.0-alpine
-    resource_class: small
 
 workflows:
   master:
@@ -25,7 +21,6 @@ workflows:
             parameters:
               executor:
                 - php74
-                - php80
           pre-steps:
             - composer/install_bin
           filters:
