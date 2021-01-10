@@ -20,7 +20,7 @@
     },
     "scripts": {
         "test": "phpunit",
-        "lint": "php-cs-fixer fix src --rules=@PSR2"
+        "lint": "php-cs-fixer fix . --rules=@PSR2"
     },
     "extra": {
         "branch-alias": {

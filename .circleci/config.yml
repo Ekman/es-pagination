@@ -1,0 +1,60 @@
+version: 2.1
+
+orbs:
+  composer: stockfiller/composer@0.0.38
+  php-cs-fixer: stockfiller/php-cs-fixer@0.0.18
+  phpunit: stockfiller/phpunit@0.0.13
+  php-coveralls: nekman/php-coveralls@0.0.5
+
+executors:
+  php74:
+    docker:
+      - image: php:7.4-alpine
+    resource_class: small
+  php80:
+    docker:
+      - image: php:8.0-alpine
+    resource_class: small
+
+workflows:
+  master:
+    jobs:
+      - phpunit/test: &unit-tests
+          name: unit-tests
+          matrix:
+            parameters:
+              executor:
+                - php74
+                - php80
+          pre-steps:
+            - composer/install_bin
+          filters:
+            branches:
+              only: master
+  branch:
+    jobs:
+      - php-cs-fixer/fix:
+          name: coding-standards
+          executor: php74
+          rules: "@PSR2"
+          pre-steps:
+            - run: apk add --update --no-cache git openssh-client
+            - composer/install_bin
+          filters: &branch-filters
+            branches:
+              ignore: master
+      - phpunit/test:
+          <<: *unit-tests
+          flags: --coverage-clover coverage/clover.xml
+          pre-steps:
+            - run: |-
+                apk add --update --no-cache ${PHPIZE_DEPS} git
+                pecl install pcov-1.0.6
+                docker-php-ext-enable pcov
+            - composer/install_bin
+          post-steps:
+            - php-coveralls/upload:
+                clover-path: coverage/clover.xml
+          filters: *branch-filters
+          requires:
+            - coding-standards

@@ -1,6 +1,6 @@
 # Elasticsearch pagination
 
-[![Build Status](https://travis-ci.org/Ekman/es-pagination.svg?branch=master)](https://travis-ci.org/Ekman/es-pagination)
+[![Build Status](https://circleci.com/gh/Ekman/es-pagination.svg?style=svg)](https://app.circleci.com/pipelines/github/Ekman/es-pagination)
 [![Coverage Status](https://coveralls.io/repos/github/Ekman/es-pagination/badge.svg?branch=master)](https://coveralls.io/github/Ekman/es-pagination?branch=master)
 
 A library to deep paginate an Elasticsearch search operation. There are [three ways to paginate](https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html):
@@ -12,7 +12,7 @@ A library to deep paginate an Elasticsearch search operation. There are [three w
 Which one to use depends on the context, [read more in the Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html).
 
 The library will get `pageSize` amount of hits in memory at the same time, which means a lower amount will result in less memory used but more requests to Elasticsearch (and the opposite). Never will it fully exhaust
-an index before returning the results. 
+an index before returning the results.
 
 ## Usage
 
@@ -90,3 +90,7 @@ foreach ($cursor as $hit) {
     echo "Hit {$hit['_id']}";
 }
 ```
+
+## Changelog
+
+For a complete list of changes, and how to migrate between major versions, see [releases page](https://github.com/Ekman/es-pagination/releases).
