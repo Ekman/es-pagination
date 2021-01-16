@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  composer: stockfiller/composer@1
+  composer: stockfiller/composer@2
   php-cs-fixer: stockfiller/php-cs-fixer@1
   phpunit: stockfiller/phpunit@1
   php-coveralls: nekman/php-coveralls@1
