@@ -1,10 +1,10 @@
 version: 2.1
 
 orbs:
-  composer: stockfiller/composer@0.0.38
-  php-cs-fixer: stockfiller/php-cs-fixer@0.0.18
-  phpunit: stockfiller/phpunit@0.0.13
-  php-coveralls: nekman/php-coveralls@0.0.5
+  composer: stockfiller/composer@2
+  php-cs-fixer: stockfiller/php-cs-fixer@1
+  phpunit: stockfiller/phpunit@1
+  php-coveralls: nekman/php-coveralls@2
 
 executors:
   php74:
@@ -12,44 +12,54 @@ executors:
       - image: php:7.4-alpine
     resource_class: small
 
+jobs:
+  test_coverage:
+    executor: php74
+    environment:
+      CLOVER_PATH: coverage/clover.xml
+    steps:
+      - run:
+          name: Install PCOV and git
+          command: |-
+            apk add --update --no-cache ${PHPIZE_DEPS} git
+            pecl install pcov-1.0.6
+            docker-php-ext-enable pcov
+      - checkout
+      - composer/install_bin
+      - composer/install
+      - phpunit/test:
+          coverage: clover
+          coverage-path: "${CLOVER_PATH}"
+          src-path: src
+          test-path: tests
+      - php-coveralls/upload:
+          clover-path: "${CLOVER_PATH}"
+
 workflows:
   master:
     jobs:
-      - phpunit/test: &unit-tests
-          name: unit-tests
+      - phpunit/test:
+          test-path: tests
           matrix:
             parameters:
               executor:
                 - php74
-          pre-steps:
-            - composer/install_bin
+          pre-steps: [ composer/install_bin ]
           filters:
             branches:
               only: master
   branch:
     jobs:
       - php-cs-fixer/fix:
-          name: coding-standards
           executor: php74
           rules: "@PSR2"
+          path: .
           pre-steps:
             - run: apk add --update --no-cache git openssh-client
             - composer/install_bin
           filters: &branch-filters
             branches:
               ignore: master
-      - phpunit/test:
-          <<: *unit-tests
-          flags: --coverage-clover coverage/clover.xml
-          pre-steps:
-            - run: |-
-                apk add --update --no-cache ${PHPIZE_DEPS} git
-                pecl install pcov-1.0.6
-                docker-php-ext-enable pcov
-            - composer/install_bin
-          post-steps:
-            - php-coveralls/upload:
-                clover-path: coverage/clover.xml
+      - test_coverage:
           filters: *branch-filters
-          requires:
-            - coding-standards
+          requires: [ php-cs-fixer/fix ]
