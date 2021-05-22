@@ -11,6 +11,10 @@ executors:
     docker:
       - image: php:7.4-alpine
     resource_class: small
+  php80:
+    docker:
+      - image: php:8.0-alpine
+    resource_class: small
 
 jobs:
   test_coverage:
@@ -38,18 +42,6 @@ jobs:
 workflows:
   master:
     jobs:
-      - phpunit/test:
-          test-path: tests
-          matrix:
-            parameters:
-              executor:
-                - php74
-          pre-steps: [ composer/install_bin ]
-          filters:
-            branches:
-              only: master
-  branch:
-    jobs:
       - php-cs-fixer/fix:
           executor: php74
           rules: "@PSR2"
@@ -57,9 +49,14 @@ workflows:
           pre-steps:
             - run: apk add --update --no-cache git openssh-client
             - composer/install_bin
-          filters: &branch-filters
+          filters:
             branches:
               ignore: master
-      - test_coverage:
-          filters: *branch-filters
-          requires: [ php-cs-fixer/fix ]
+      - test_coverage
+      - phpunit/test:
+          test-path: tests
+          matrix:
+            parameters:
+              executor:
+                - php80
+          pre-steps: [ composer/install_bin ]
