@@ -45,7 +45,7 @@ class EsScrollCursorFactory extends BaseCursorFactory
                 ]);
             }
         } finally {
-            $this->client->clearScroll([
+            @$this->client->clearScroll([
                 "body" => [
                     "scroll_id" => $scrollId,
                 ]
