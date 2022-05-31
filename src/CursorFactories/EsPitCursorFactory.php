@@ -47,7 +47,7 @@ class EsPitCursorFactory extends BaseCursorFactory
         ];
 
         try {
-            return $this->delegate->responses($params);
+            yield from $this->delegate->responses($params);
         } finally {
             @$this->client->closePointInTime([
                 "body" => [
