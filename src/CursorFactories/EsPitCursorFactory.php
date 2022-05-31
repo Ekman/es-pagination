@@ -6,15 +6,19 @@ use Elasticsearch\Client;
 use Nekman\EsPagination\Contracts\EsCursorFactoryInterface;
 use Nekman\EsPagination\Exceptions\CreatePitException;
 
+/**
+ * Elasticsearch pit (point in time) is a lightweight view into the state of the data as it existed when initiated.
+ * @see https://www.elastic.co/guide/en/elasticsearch/reference/current/point-in-time-api.html
+ */
 class EsPitCursorFactory extends BaseCursorFactory
 {
-    private EsCursorFactoryInterface $delegate;
+    private EsCursorFactoryInterface $decorator;
     private Client $client;
     private string $pitKeepAlive;
 
-    public function __construct(EsCursorFactoryInterface $delegate, Client $client, string $pitKeepAlive = "1m")
+    public function __construct(EsCursorFactoryInterface $decorator, Client $client, string $pitKeepAlive = "1m")
     {
-        $this->delegate = $delegate;
+        $this->decorator = $decorator;
         $this->client = $client;
         $this->pitKeepAlive = $pitKeepAlive;
     }
@@ -47,7 +51,7 @@ class EsPitCursorFactory extends BaseCursorFactory
         ];
 
         try {
-            yield from $this->delegate->responses($params);
+            yield from $this->decorator->responses($params);
         } finally {
             @$this->client->closePointInTime([
                 "body" => [
