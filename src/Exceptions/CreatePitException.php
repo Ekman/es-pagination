@@ -2,6 +2,6 @@
 
 namespace Nekman\EsPagination\Exceptions;
 
-class CreatePitException extends EsPaginationException
+final class CreatePitException extends EsPaginationException
 {
 }

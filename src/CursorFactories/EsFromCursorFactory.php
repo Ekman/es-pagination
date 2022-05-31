@@ -5,7 +5,7 @@ namespace Nekman\EsPagination\CursorFactories;
 use Elasticsearch\Client;
 use Nekman\EsPagination\EsUtility;
 
-class EsFromCursorFactory extends BaseCursorFactory
+final class EsFromCursorFactory extends BaseCursorFactory
 {
     private Client $es;
     private int $pageSize;

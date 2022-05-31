@@ -9,7 +9,7 @@ use Nekman\EsPagination\EsUtility;
  * Deep paginate an ES search by using scroll
  * @see https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results
  */
-class EsScrollCursorFactory extends BaseCursorFactory
+final class EsScrollCursorFactory extends BaseCursorFactory
 {
     private Client $client;
     private int $pageSize;
