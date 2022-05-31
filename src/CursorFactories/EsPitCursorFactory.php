@@ -41,7 +41,7 @@ class EsPitCursorFactory extends BaseCursorFactory
             unset($params["index"]);
         }
 
-        $params["pit"] = [
+        $params["body"]["pit"] = [
             "id" => $pit,
             "keep_alive" => $params["pit"]["keep_alive"] ?? $this->pitKeepAlive,
         ];
