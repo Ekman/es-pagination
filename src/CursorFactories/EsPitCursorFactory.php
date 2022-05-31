@@ -12,14 +12,14 @@ class EsPitCursorFactory extends BaseCursorFactory
     private Client $client;
     private string $pitKeepAlive;
 
-	public function __construct(EsCursorFactoryInterface $delegate, Client $client, string $pitKeepAlive = "1m")
-	{
-		$this->delegate = $delegate;
-		$this->client = $client;
-		$this->pitKeepAlive = $pitKeepAlive;
-	}
+    public function __construct(EsCursorFactoryInterface $delegate, Client $client, string $pitKeepAlive = "1m")
+    {
+        $this->delegate = $delegate;
+        $this->client = $client;
+        $this->pitKeepAlive = $pitKeepAlive;
+    }
 
-	public function responses(array $params = []): iterable
+    public function responses(array $params = []): iterable
     {
         // Check if the user has provided a PIT ID. If not, create one and manage it for the user.
         // If the user has created an own PIT then let them manage it themselves.
