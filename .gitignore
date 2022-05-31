@@ -5,6 +5,7 @@ nbproject/
 .phpunit.result.cache
 coverage
 test-results
+.phpunit.cache
 
 # Eclipse
 .buildpath
