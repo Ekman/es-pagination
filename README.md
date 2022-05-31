@@ -91,6 +91,36 @@ foreach ($cursor as $hit) {
 }
 ```
 
+### Point in time (PIT)
+
+Elasticsearch pit (point in time) is a lightweight view into the state of the data as it existed when initiated. Create a
+cursor factory and decorate it with PIT:
+
+```php
+use \Nekman\EsPagination\CursorFactories\EsPitCursorFactory;
+
+$cursorFactory = /* Create cursor factory, see above */;
+
+$pitCursorFactory = new EsPitCursorFactory(
+	$cursorFactory,
+	$elasticsearchFactory,
+	$pitKeepAlive = "1m"
+);
+
+$params = [
+    /*
+     * Same params as a normal Elasticsearch search operation.
+     * See Elasticsearch documentation for more information.
+     */
+];
+
+$cursor = $cursorFactory->hits($params);
+
+foreach ($cursor as $hit) {
+    echo "Hit {$hit['_id']}";
+}
+```
+
 ## Versioning
 
 This project complies with [Semantic Versioning](https://semver.org/).
