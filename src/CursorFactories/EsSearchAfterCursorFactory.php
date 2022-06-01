@@ -14,7 +14,7 @@ final class EsSearchAfterCursorFactory extends BaseCursorFactory
     public function __construct(
         Client $client,
         int $pageSize = EsUtility::DEFAULT_PAGE_SIZE,
-        array $defaultSort = [["_id" => "asc"]]
+        array $defaultSort = [["_doc" => "asc"]]
     ) {
         $this->client = $client;
         $this->pageSize = $pageSize;
