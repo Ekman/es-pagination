@@ -2,7 +2,7 @@
 
 namespace Nekman\EsPagination\CursorFactories;
 
-use Elasticsearch\Client;
+use Elastic\Elasticsearch\Client;
 use Nekman\EsPagination\EsUtility;
 use PHPUnit\Framework\TestCase;
 

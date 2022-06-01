@@ -22,7 +22,7 @@
 		"php-coveralls/php-coveralls": "^2.4"
 	},
 	"scripts": {
-		"test": "phpunit",
+		"test": "phpunit tests --bootstrap vendor/autoload.php",
 		"lint": "php-cs-fixer fix . --rules=@PSR2"
 	},
 	"extra": {
